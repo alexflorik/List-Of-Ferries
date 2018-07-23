@@ -1,0 +1,115 @@
+<div class="mat-elevation-z8">
+	<mat-table [dataSource]="dataSource" matSort class="mat-table">
+
+  <!-- Position Column -->
+  	<ng-container matColumnDef="position" class="cell-container">
+    	<mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2"> РК с/з </mat-header-cell>
+    	<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+  	</ng-container>
+
+  	<!-- Name Column -->
+  	<ng-container matColumnDef="name">
+    	<mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2"> Код порту </mat-header-cell>
+    	<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  	</ng-container>
+
+  	<!-- Weight Column -->
+ 	 <ng-container matColumnDef="weight">
+  	  <mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2"> Назва судна </mat-header-cell>
+   		<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+ 	 </ng-container>
+
+ 	 <!-- Symbol Column -->
+ 	 <ng-container matColumnDef="symbol">
+ 	   <mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2"> Найменування агента </mat-header-cell>
+ 	   <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+ 	 </ng-container>
+
+    <!-- Nam Column -->
+ 	 <ng-container matColumnDef="symbo">
+ 	   <mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2"> Планований прихід/вихід </mat-header-cell>
+ 	   <mat-cell *matCellDef="let element"> {{element.symbo}} </mat-cell>
+	  </ng-container>
+
+	  <!-- Weigh Column -->
+	  <ng-container matColumnDef="symb">
+	    <mat-header-cell *matHeaderCellDef mat-sort-header rowspan="2"> Фактичний прихід/вихід </mat-header-cell>
+	    <mat-cell *matCellDef="let element"> {{element.symb}} </mat-cell>
+ 	 </ng-container>
+
+ 	 <!-- Symbo Column -->
+ 	 <ng-container matColumnDef="sym">
+ 	   <mat-header-cell *matHeaderCellDef mat-sort-header> Остання подача документів </mat-header-cell>
+ 	   <mat-cell *matCellDef="let element"> {{element.sym}} </mat-cell>
+ 	 </ng-container>
+
+ 	 <!-- Item Description Column -->
+  <ng-container matColumnDef="position-description">
+    <mat-header-cell *matHeaderCellDef>
+    	<mat-form-field>
+  			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="name-description">
+    <mat-header-cell *matHeaderCellDef>
+    	<mat-form-field>
+  			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="weight-description">
+    <mat-header-cell *matHeaderCellDef>
+    	<mat-form-field>
+  			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="symbol-description">
+    <mat-header-cell *matHeaderCellDef>
+    	<mat-form-field>
+  			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="symbo-description">
+    <mat-header-cell *matHeaderCellDef>
+    	<mat-form-field>
+  			<input matInput [matDatepicker]="picker" (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+  			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="symb-description">
+    <mat-header-cell *matHeaderCellDef>
+    	<mat-form-field>
+  			<input matInput [matDatepicker]="picker" (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+  			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+  <!-- Item Description Column -->
+  <ng-container matColumnDef="sym-description">
+    <mat-header-cell *matHeaderCellDef>
+			<mat-form-field>
+  			<input matInput [matDatepicker]="picker" (keyup)="applyFilter($event.target.value)" placeholder="Пошук...">
+  			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  			<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+    </mat-header-cell>
+  </ng-container>
+
+ 	 <mat-header-row *matHeaderRowDef="displayedColumns" class="first-header-row"></mat-header-row>
+ 	 <mat-header-row *matHeaderRowDef="['position-description', 'name-description', 'weight-description', 'symbol-description', 'symbo-description', 'symb-description', 'sym-description']" class="second-header-row"></mat-header-row>
+	  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 
+	</mat-table>
+	<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
